@@ -31,6 +31,7 @@ resource "aws_instance" "main" {
   vpc_security_group_ids = [aws_security_group.main.id]
 
   instance_market_options {
+    market_type = "spot"
     spot_options {
       instance_interruption_behavior  = "stop"
       spot_instance_type              = "persistent"
