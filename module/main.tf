@@ -51,4 +51,12 @@ resource "aws_route53_record" "main" {
   records = [aws_instance.main.public_ip]
 }
 
+resource "aws_route53_record" "private" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = "${var.name}-internal.rdevopsb79.online"
+  type    = "A"
+  ttl     = 5
+  records = [aws_instance.main.private_ip]
+}
+
 
