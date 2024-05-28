@@ -3,17 +3,17 @@ resource "aws_security_group" "main" {
   description = var.name
 
   ingress {
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port        = var.port_no
-    to_port          = var.port_no
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = var.port_no
+    to_port     = var.port_no
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -33,8 +33,8 @@ resource "aws_instance" "main" {
   instance_market_options {
     market_type = "spot"
     spot_options {
-      instance_interruption_behavior  = "stop"
-      spot_instance_type              = "persistent"
+      instance_interruption_behavior = "stop"
+      spot_instance_type             = "persistent"
     }
   }
 

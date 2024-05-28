@@ -1,7 +1,7 @@
 resource "aws_iam_role" "main" {
   name = "${var.name}-role"
 
-  assume_role_policy =<<EOF
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -26,10 +26,7 @@ EOF
         {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstances",
-                "ec2:DescribeAvailabilityZones"
-            ],
+            "Action": ${var.policy_actions},
             "Resource": "*"
         }
     ]
