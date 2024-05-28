@@ -16,10 +16,32 @@ resource "aws_iam_role" "main" {
 }
 EOF
 
+  inline_policy {
+    name = "inline-policy"
+
+    policy = <<EOT
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances",
+                "ec2:DescribeAvailabilityZones"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOT
+  }
+
   tags = {
     Name = "${var.name}-role"
   }
 }
+
 
 resource "aws_iam_instance_profile" "main" {
   name = "${var.name}-role"
