@@ -23,6 +23,10 @@
     ds_type: prometheus
     ds_url: http://prometheus-internal.rdevopsb79.online:9090
     access: direct
+    url: http://localhost:3000
+    url_username: admin
+    url_password: admin123
+
 
 
 
