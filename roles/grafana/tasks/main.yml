@@ -30,7 +30,7 @@
 
 
 - name: Copy test.json file
-  ansible.builtin.file:
+  ansible.builtin.copy:
     src: test.json
     dest: /tmp/test.json
 
