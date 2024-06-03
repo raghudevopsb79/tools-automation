@@ -9,13 +9,6 @@ resource "aws_security_group" "main" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    from_port   = var.port_no
-    to_port     = var.port_no
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   egress {
     from_port        = 0
     to_port          = 0
@@ -23,6 +16,16 @@ resource "aws_security_group" "main" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+}
+
+resource "aws_security_group_rule" "app-ports" {
+  count             = length(var.port_no)
+  type              = "ingress"
+  from_port         = element(var.port_no, count.index)
+  to_port           = element(var.port_no, count.index)
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.main.id
 }
 
 resource "aws_instance" "main" {
