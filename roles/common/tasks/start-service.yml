@@ -10,5 +10,5 @@
   register: service_status
 
 - debug:
-    msg: "{{ demo.ansible_facts.services[service_name + '.service'].status }}"
+    msg: "{{ service_status.ansible_facts.services[service_name + '.service'].status }}"
 
