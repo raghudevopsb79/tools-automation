@@ -9,6 +9,10 @@
   ansible.builtin.service_facts:
   register: service_status
 
-- debug:
-    msg: "{{ service_status.ansible_facts.services[service_name + '.service'].status }}"
+- name: Service Failed
+  ansible.builtin.fail:
+    msg: Service "{{ service_name }}" in Failed State
+  when: state == "failed"
+  vars:
+    state: "{{ service_status.ansible_facts.services[service_name + '.service'].status }}"
 
