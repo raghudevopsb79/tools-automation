@@ -22,8 +22,8 @@
 
 - name: Update Alerts
   ansible.builtin.template:
-    src: alert-rules.yml
-    dest: /opt/prometheus-2.52.0.linux-amd64/alert-rules.yml
+    src: alert_rules.yml
+    dest: /opt/prometheus-2.52.0.linux-amd64/alert_rules.yml
     owner: prometheus
     group: prometheus
 
