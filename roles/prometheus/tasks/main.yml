@@ -60,10 +60,10 @@
     src: alertmanager.service
     dest: /etc/systemd/system/alertmanager.service
 
-- name: Start AlertManager service
-  ansible.builtin.systemd_service:
-    name: alertmanager
-    state: restarted
-    enabled: yes
-    daemon-reload: yes
+- name: Start Alertmanager Service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: start-service
+  vars:
+    service_name: alertmanager
 
