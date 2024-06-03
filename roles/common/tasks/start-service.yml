@@ -1,0 +1,14 @@
+- name: Start {{ service_name }} service
+  ansible.builtin.systemd_service:
+    name: "{{ service_name }}"
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
+
+- name: Get Service Statuses
+  ansible.builtin.service_facts:
+  register: service_status
+
+- debug:
+    msg: "{{ demo.ansible_facts.services[service_name + '.service'].status }}"
+
