@@ -1,0 +1,26 @@
+- name: Copy Repo file
+  ansible.builtin.template:
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
+
+- name: Install Tools
+  ansible.builtin.dnf:
+    name:
+      - elasticsearch
+      - kibana
+      - logstash
+      - nginx
+    state: installed
+
+- name: Start Services
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    state: restarted
+    enabled: yes
+  loop:
+      - elasticsearch
+      - kibana
+      - logstash
+      - nginx
+
+
