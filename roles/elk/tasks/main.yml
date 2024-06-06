@@ -17,7 +17,7 @@
 
 - name: Copy Config files
   ansible.builtin.template:
-    src: "{{ item.file }}"
+    src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   loop:
     - { src: nginx.conf, dest: /etc/nginx/nginx.conf }
