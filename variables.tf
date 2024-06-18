@@ -2,9 +2,9 @@ variable "tools" {
   default = {
 
     vault = {
-      name           = "vault"
-      instance_type  = "t3.small"
-      port_no        = {
+      name          = "vault"
+      instance_type = "t3.small"
+      port_no = {
         vault = 8200
       }
       policy_actions = []
@@ -13,8 +13,8 @@ variable "tools" {
     prometheus = {
       name          = "prometheus"
       instance_type = "t3.small"
-      port_no       = {
-        prometheus = 9090
+      port_no = {
+        prometheus   = 9090
         alertmanager = 9093
       }
       policy_actions = [
@@ -26,7 +26,7 @@ variable "tools" {
     grafana = {
       name          = "grafana"
       instance_type = "t3.small"
-      port_no       = {
+      port_no = {
         grafana = 3000
       }
       policy_actions = []
@@ -35,8 +35,8 @@ variable "tools" {
     elk = {
       name          = "elk"
       instance_type = "r7a.large"
-      port_no       = {
-        kibana = 80
+      port_no = {
+        kibana   = 80
         logstash = 5044
       }
       policy_actions = []
