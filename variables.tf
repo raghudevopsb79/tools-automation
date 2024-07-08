@@ -42,6 +42,13 @@ variable "tools" {
       policy_actions = []
     }
 
+    elk = {
+      name          = "ci-server"
+      instance_type = "t3.small"
+      port_no = {}
+      policy_actions = []
+    }
+
   }
 }
 
