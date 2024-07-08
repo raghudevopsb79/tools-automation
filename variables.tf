@@ -42,7 +42,7 @@ variable "tools" {
       policy_actions = []
     }
 
-    elk = {
+    ci-server = {
       name          = "ci-server"
       instance_type = "t3.small"
       port_no = {}
