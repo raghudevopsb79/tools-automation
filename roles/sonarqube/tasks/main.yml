@@ -21,7 +21,7 @@
   ansible.builtin.unarchive:
     remote_src: true
     src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.6.0.92116.zip
-    path: /sonarqube
+    dest: /sonarqube
     owner: sonar
     group: sonar
 
