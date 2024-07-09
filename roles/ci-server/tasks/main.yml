@@ -28,5 +28,6 @@
     chdir: /actions-runner
 
 - name: Install Runner Service
-  ansible.builtin.shell: sudo /actions-runner/svc.sh install ; sudo /actions-runner/svc.sh start
-
+  ansible.builtin.shell: ./svc.sh install ;./svc.sh start
+  args:
+    chdir: /actions-runner
