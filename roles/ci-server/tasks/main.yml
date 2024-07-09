@@ -16,6 +16,11 @@
     group: ec2-user
     remote_src: true
 
+- name: Install libicu
+  ansible.builtin.dnf:
+    name: libicu
+    state: installed
+
 - name: Configure Runner
   ansible.builtin.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{secrets.runner_token}}
   become_user: ec2-user
