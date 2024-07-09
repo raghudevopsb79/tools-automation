@@ -25,3 +25,14 @@
     owner: sonar
     group: sonar
 
+- name: Copy systemd file
+  ansible.builtin.copy:
+    src: sonarqube.service
+    dest: /etc/systemd/system/sonarqube.service
+
+- name: Start service
+  ansible.builtin.systemd_service:
+    name: sonarqube
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
