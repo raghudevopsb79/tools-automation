@@ -22,7 +22,7 @@
     state: installed
 
 - name: Remove Runner
-  ansible.builtin.shell: /actions-runner/config.sh remove --token {{secrets.runner_token}}
+  ansible.builtin.shell: sudo ./svc.sh uninstall ; /actions-runner/config.sh remove --token {{secrets.runner_token}}
   become_user: ec2-user
   args:
     chdir: /actions-runner
