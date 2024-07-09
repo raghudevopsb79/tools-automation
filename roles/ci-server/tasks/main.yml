@@ -15,6 +15,6 @@
     group: ec2-user
 
 - name: Configure Runner
-  ansible.group.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{secrets.runner_token}}
+  ansible.builtin.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{secrets.runner_token}}
 
 
