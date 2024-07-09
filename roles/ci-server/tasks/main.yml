@@ -22,7 +22,7 @@
     state: installed
 
 - name: Configure Runner
-  ansible.builtin.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{secrets.runner_token}} --unattended
+  ansible.builtin.shell: /actions-runner/config.sh remove ;/actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{secrets.runner_token}} --unattended
   become_user: ec2-user
   args:
     chdir: /actions-runner
