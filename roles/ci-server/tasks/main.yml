@@ -21,15 +21,19 @@
     name: libicu
     state: installed
 
+- name: Get token
+  ansible.builtin.shell: gh api   --method POST   -H "Accept: application/vnd.github+json"   /orgs/raghudevopsb79/actions/runners/registration-token | jq .token | xargs
+  register: token
+
 - name: Remove Runner
-  ansible.builtin.shell: sudo ./svc.sh stop  ; sudo ./svc.sh uninstall ; /actions-runner/config.sh remove --token {{secrets.runner_token}}
+  ansible.builtin.shell: sudo ./svc.sh stop  ; sudo ./svc.sh uninstall ; /actions-runner/config.sh remove --token {{token.stdout}}
   become_user: ec2-user
   args:
     chdir: /actions-runner
   ignore_errors: yes
 
 - name: Configure Runner
-  ansible.builtin.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{secrets.runner_token}} --unattended
+  ansible.builtin.shell: /actions-runner/config.sh --url https://github.com/raghudevopsb79 --token {{token.stdout}} --unattended --replace
   become_user: ec2-user
   args:
     chdir: /actions-runner
