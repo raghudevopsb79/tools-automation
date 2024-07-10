@@ -22,7 +22,8 @@
     state: installed
 
 - name: Get token
-  ansible.builtin.shell: gh api   --method POST   -H "Accept: application/vnd.github+json"   /orgs/raghudevopsb79/actions/runners/registration-token | jq .token | xargs
+  ansible.builtin.shell: |
+    gh api --method POST -H "Accept: application/vnd.github+json"   /orgs/raghudevopsb79/actions/runners/registration-token | jq .token | xargs
   register: token
 
 - name: Remove Runner
