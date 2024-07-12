@@ -55,7 +55,9 @@ variable "tools" {
       port_no = {
         sonarqube = 9000
       }
-      policy_actions = []
+      policy_actions = [
+        "ecr:*"
+      ]
     }
 
   }
