@@ -49,7 +49,8 @@ variable "tools" {
       policy_actions = [
         "ecr:*",
         "eks:DescribeCluster",
-        "inspector2:ListCoverage"
+        "inspector2:ListCoverage",
+        "inspector2:ListFindings"
       ]
     }
 
