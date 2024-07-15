@@ -48,7 +48,8 @@ variable "tools" {
       port_no = {}
       policy_actions = [
         "ecr:*",
-        "eks:DescribeCluster"
+        "eks:DescribeCluster",
+        "inspector2:ListCoverage"
       ]
     }
 
