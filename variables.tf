@@ -8,6 +8,7 @@ variable "tools" {
         vault = 8200
       }
       policy_actions = []
+      volume_size = 20
     }
 
     prometheus = {
@@ -21,6 +22,7 @@ variable "tools" {
         "ec2:DescribeInstances",
         "ec2:DescribeAvailabilityZones"
       ]
+      volume_size = 20
     }
 
     grafana = {
@@ -30,6 +32,7 @@ variable "tools" {
         grafana = 3000
       }
       policy_actions = []
+      volume_size = 20
     }
 
     elk = {
@@ -40,6 +43,7 @@ variable "tools" {
         logstash = 5044
       }
       policy_actions = []
+      volume_size = 20
     }
 
     ci-server = {
@@ -52,17 +56,7 @@ variable "tools" {
         "inspector2:ListCoverage",
         "inspector2:ListFindings"
       ]
-    }
-
-    sonarqube = {
-      name          = "sonarqube"
-      instance_type = "r7a.large"
-      port_no = {
-        sonarqube = 9000
-      }
-      policy_actions = [
-
-      ]
+      volume_size = 30
     }
 
   }

@@ -5,3 +5,5 @@ variable "policy_actions" {}
 variable "dummy_policy" {
   default = ["ec2:DescribeInstanceTypes"]
 }
+
+variable "volume_size" {}
