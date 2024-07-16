@@ -21,11 +21,14 @@
     name: libicu
     state: installed
 
-- name: Get token
+- name: Install gh cli
   ansible.builtin.shell: |
     dnf install 'dnf-command(config-manager)' -y
     dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
     dnf install gh --repo gh-cli -y
+
+- name: Get token
+  ansible.builtin.shell: |
     gh api --method POST -H "Accept: application/vnd.github+json" /orgs/raghudevopsb79/actions/runners/registration-token | jq .token | xargs
   register: token
 
