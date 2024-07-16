@@ -86,3 +86,9 @@
     install -m 555 kubectl /usr/local/bin/kubectl
     rm -f kubectl
 
+- name: Install Docker
+  ansible.builtin.dnf:
+    name: docker
+    state: installed
+
+
