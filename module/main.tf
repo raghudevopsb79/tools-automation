@@ -43,6 +43,10 @@ resource "aws_instance" "main" {
     }
   }
 
+  root_block_device {
+    volume_size = 30
+  }
+
   tags = {
     Name = var.name
   }
