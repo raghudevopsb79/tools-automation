@@ -23,7 +23,10 @@
 
 - name: Get token
   ansible.builtin.shell: |
-    gh api --method POST -H "Accept: application/vnd.github+json"   /orgs/raghudevopsb79/actions/runners/registration-token | jq .token | xargs
+    dnf install 'dnf-command(config-manager)'
+    dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+    dnf install gh --repo gh-cli -y
+    gh api --method POST -H "Accept: application/vnd.github+json" /orgs/raghudevopsb79/actions/runners/registration-token | jq .token | xargs
   register: token
 
 - name: Remove Runner
