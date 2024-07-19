@@ -11,29 +11,29 @@ variable "tools" {
       volume_size = 20
     }
 
-    prometheus = {
-      name          = "prometheus"
-      instance_type = "t3.small"
-      port_no = {
-        prometheus   = 9090
-        alertmanager = 9093
-      }
-      policy_actions = [
-        "ec2:DescribeInstances",
-        "ec2:DescribeAvailabilityZones"
-      ]
-      volume_size = 20
-    }
-
-    grafana = {
-      name          = "grafana"
-      instance_type = "t3.small"
-      port_no = {
-        grafana = 3000
-      }
-      policy_actions = []
-      volume_size = 20
-    }
+#     prometheus = {
+#       name          = "prometheus"
+#       instance_type = "t3.small"
+#       port_no = {
+#         prometheus   = 9090
+#         alertmanager = 9093
+#       }
+#       policy_actions = [
+#         "ec2:DescribeInstances",
+#         "ec2:DescribeAvailabilityZones"
+#       ]
+#       volume_size = 20
+#     }
+#
+#     grafana = {
+#       name          = "grafana"
+#       instance_type = "t3.small"
+#       port_no = {
+#         grafana = 3000
+#       }
+#       policy_actions = []
+#       volume_size = 20
+#     }
 
     elk = {
       name          = "elk"
