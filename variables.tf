@@ -11,14 +11,12 @@ variable "tools" {
       volume_size    = 20
     }
 
-    minikube = {
-      name          = "minikube"
-      instance_type = "t3.medium"
-      port_no = {
-        kube = 8443
-      }
+    github-runner = {
+      name          = "github-runner"
+      instance_type = "t3.small"
+      port_no = {}
       policy_actions = []
-      volume_size    = 30
+      volume_size    = 20
     }
 
   }

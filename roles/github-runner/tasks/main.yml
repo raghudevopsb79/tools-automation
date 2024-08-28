@@ -1,3 +1,8 @@
+# Following steps need to be run manually
+# sudo curl -L -o /etc/yum.repos.d/gh-cli.repo https://cli.github.com/packages/rpm/gh-cli.repo
+# sudo dnf install gh -y
+# gh auth login -s admin:org
+
 - name: Set Prompt
   ansible.builtin.shell: set-prompt ci-server
 
@@ -27,9 +32,6 @@
     dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
     dnf install gh --repo gh-cli -y
 
-# This token will run if we auth manually , Following are two commands we need to run.
-# gh auth login
-# gh auth refresh -h github.com -s admin:org
 
 - name: Get token
   ansible.builtin.shell: |
