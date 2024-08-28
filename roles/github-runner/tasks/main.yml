@@ -87,9 +87,9 @@
     name: docker
     state: installed
 
-- name: Increase disk volumes
-  ansible.builtin.shell: |
-    growpart /dev/nvme0n1 4
-    lvextend -r -L +5G /dev/mapper/RootVG-homeVol
-    lvextend -r -L +5G /dev/mapper/RootVG-varVol
+# - name: Increase disk volumes
+#   ansible.builtin.shell: |
+#     growpart /dev/nvme0n1 4
+#     lvextend -r -L +5G /dev/mapper/RootVG-homeVol
+#     lvextend -r -L +5G /dev/mapper/RootVG-varVol
 
