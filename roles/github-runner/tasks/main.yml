@@ -98,6 +98,9 @@
     name: terraform
     state: installed
 
+- name: Install kubergrunt
+  ansible.builtin.shell: labauto kubergrunt
+
 # - name: Increase disk volumes
 #   ansible.builtin.shell: |
 #     growpart /dev/nvme0n1 4
