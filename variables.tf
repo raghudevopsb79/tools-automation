@@ -9,7 +9,7 @@ variable "tools" {
       }
       policy_actions      = []
       volume_size         = 20
-      predefined_policies = ["AdministratorAccess"]
+      predefined_policies = []
     }
 
     github-runner = {
