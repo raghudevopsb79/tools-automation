@@ -101,6 +101,12 @@
 - name: Install kubergrunt
   ansible.builtin.shell: labauto kubergrunt
 
+- name: Create Dummy kubeconfig
+  ansible.builtin.shell: |
+    mkdir -p ~/.kube
+    touch ~/.kube/config
+  become_user: ec2-user
+
 # - name: Increase disk volumes
 #   ansible.builtin.shell: |
 #     growpart /dev/nvme0n1 4
