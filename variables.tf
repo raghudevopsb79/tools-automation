@@ -17,6 +17,7 @@ variable "tools" {
       port_no = {}
       policy_actions = []
       volume_size    = 20
+      predefined_policies = ["AdministratorAccess"]
     }
 
   }

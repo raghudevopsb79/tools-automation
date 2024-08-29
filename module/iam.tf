@@ -41,3 +41,10 @@ resource "aws_iam_instance_profile" "main" {
   role = aws_iam_role.main.name
 }
 
+resource "aws_iam_policy_attachment" "predefined-policies" {
+  count      = length(var.predefined_policies)
+  name       = aws_iam_role.main.name
+  policy_arn = "arn:aws:iam::aws:policy/${var.predefined_policies[count.index]}"
+}
+
+

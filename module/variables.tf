@@ -7,3 +7,7 @@ variable "dummy_policy" {
 }
 
 variable "volume_size" {}
+variable "predefined_policies" {
+  default = []
+}
+
