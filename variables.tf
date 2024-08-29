@@ -7,16 +7,17 @@ variable "tools" {
       port_no = {
         vault = 8200
       }
-      policy_actions = []
-      volume_size    = 20
+      policy_actions      = []
+      volume_size         = 20
+      predefined_policies = ["AdministratorAccess"]
     }
 
     github-runner = {
-      name          = "github-runner"
-      instance_type = "t3.small"
-      port_no = {}
-      policy_actions = []
-      volume_size    = 20
+      name                = "github-runner"
+      instance_type       = "t3.small"
+      port_no             = {}
+      policy_actions      = []
+      volume_size         = 20
       predefined_policies = ["AdministratorAccess"]
     }
 
