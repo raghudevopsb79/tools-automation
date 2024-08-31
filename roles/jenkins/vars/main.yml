@@ -1,1 +1,1 @@
-secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra-secrets/data/jenkins token={{vault_token}} url=https://vault-internal.rdevopsb79.online:8200 validate_certs=false') }}"
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=common/data/jenkins token={{vault_token}} url=https://vault-internal.rdevopsb79.online:8200 validate_certs=false') }}"
