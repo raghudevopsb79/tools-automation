@@ -22,7 +22,7 @@
 - name: Disable TMPFS
   ansible.builtin.shell: |
     systemctl mask tmp.mount
-    umount /mnt
+    umount /tmp
 
 
 
