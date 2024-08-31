@@ -17,7 +17,7 @@ variable "tools" {
       instance_type       = "t3.small"
       port_no             = {}
       policy_actions      = []
-      volume_size         = 20
+      volume_size         = 30
       predefined_policies = ["AdministratorAccess"]
     }
 
