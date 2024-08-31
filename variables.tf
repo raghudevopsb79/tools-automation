@@ -22,12 +22,10 @@ variable "tools" {
     }
 
     jenkins = {
-      name                = "jenkins"
-      instance_type       = "t3.small"
-      port_no             = {
-        port_no = {
-          jenkins = 8080
-        }
+      name          = "jenkins"
+      instance_type = "t3.small"
+      port_no = {
+        jenkins = 8080
       }
       policy_actions      = []
       volume_size         = 20
