@@ -25,7 +25,8 @@ variable "tools" {
       name          = "jenkins"
       instance_type = "t3.small"
       port_no = {
-        jenkins = 8080
+        jenkins   = 8080
+        jnlp-port = 50000
       }
       policy_actions      = []
       volume_size         = 20
