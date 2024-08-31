@@ -6,8 +6,9 @@ def instance = Jenkins.getInstance()
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
 hudsonRealm.createAccount("{{ secrets.user }}","{{ secrets.password }}")
 instance.setSecurityRealm(hudsonRealm)
-instance.save()
-def strategy = new GlobalMatrixAuthorizationStrategy()
-strategy.add(Jenkins.ADMINISTER, "{{ secrets.user }}")
-instance.setAuthorizationStrategy(strategy)
 
+
+def strategy = new hudson.security.FullControlOnceLoggedInAuthorizationStrategy()
+strategy.setAllowAnonymousRead(false)
+instance.setAuthorizationStrategy(strategy)
+instance.save()
