@@ -115,6 +115,5 @@ def installPlugins(pluginList) {
 }
 
 installPlugins(pluginsToInstall)
-Jenkins.instance.safeRestart()
 
 
