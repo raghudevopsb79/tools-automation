@@ -32,7 +32,6 @@
     - 01-wizard.groovy
     - 02-admin-user.groovy
 
-
 - name: Start Jenkins Service
   ansible.builtin.systemd_service:
     name: jenkins
