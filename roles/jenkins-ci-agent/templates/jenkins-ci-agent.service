@@ -1,0 +1,11 @@
+[Unit]
+Description = Jenkins CI Agent Service
+
+[Service]
+User=jenkins
+WorkingDirectory=/jenkins
+ExecStart=/bin/java -jar agent.jar -jnlpUrl http://jenkins-internal.rdevopsb79.online:8080/computer/agent-node/jenkins-agent.jnlp -workDir "/jenkins" -jnlpCredentials {{ secrets.user }}:{{ secrets.password }}
+SyslogIdentifier=backend
+
+[Install]
+WantedBy=multi-user.target

@@ -24,7 +24,17 @@
     systemctl mask tmp.mount
     df | grep ^tmpfs | grep /tmp && umount /tmp || true
 
+- name: Copy Jenkins Service file
+  ansible.builtin.template:
+    src: jenkins-ci-agent.service
+    dest: /etc/systemd/system/jenkins-ci-agent.service
 
+- name: Start Agent Service
+  ansible.builtin.systemd_service:
+    name: jenkins-ci-agent
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
 
 
 
