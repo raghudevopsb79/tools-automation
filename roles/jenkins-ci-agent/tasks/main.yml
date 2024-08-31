@@ -8,11 +8,18 @@
       - java-17-openjdk
     state: installed
 
+- name: Add Jenkins user
+  ansible.builtin.user:
+    name: jenkins
+    home: /jenkins
+
 - name: Download Agent Jar file
   ansible.builtin.get_url:
-    url: http://{{secrets.user}}:{{secrets.password}}@jenkins.rdevopsb79.online:8080/jnlpJars/agent.jar
-    dest: /home/ec2-user/remoting.jar
-  become_user: ec2-user
+    url: http://{{secrets.user}}:{{secrets.password}}@jenkins-internal.rdevopsb79.online:8080/jnlpJars/agent.jar
+    dest: /jenkins/agent.jar
+  become_user: jenkins
+
+
 
 
 
