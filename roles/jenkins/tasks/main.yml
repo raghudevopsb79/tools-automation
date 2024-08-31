@@ -35,7 +35,7 @@
 - name: Start Jenkins Service
   ansible.builtin.systemd_service:
     name: jenkins
-    state: started
+    state: restarted
     enabled: yes
 
 
