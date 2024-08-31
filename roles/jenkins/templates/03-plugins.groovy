@@ -1,6 +1,4 @@
 import jenkins.model.*
-import hudson.model.*
-import jenkins.model.Jenkins
 import hudson.PluginWrapper
 
 def pluginsToInstall = [
@@ -43,7 +41,6 @@ def pluginsToInstall = [
     'matrix-project',
     'resource-disposer',
     'ws-cleanup',
-    'ant',
     'okhttp-api',
     'durable-task',
     'workflow-durable-task-step',
@@ -91,29 +88,30 @@ def pluginsToInstall = [
     'ldap',
     'email-ext',
     'theme-manager',
-    'dark-theme'
+    'dark-theme',
+    'blueocean'
 ]
 
+// Reference Jenkins Plugin Manager and Update Center
 def pluginManager = Jenkins.instance.pluginManager
 def updateCenter = Jenkins.instance.updateCenter
 
-def installPlugins(pluginList) {
-  pluginList.each { pluginName ->
-    if (pluginManager.getPlugin(pluginName) == null) {
-      println "Installing plugin: ${pluginName}"
-      def plugin = updateCenter.getPlugin(pluginName)
-      if (plugin) {
-        plugin.deploy(true)
-        println "Successfully installed ${pluginName}."
-      } else {
-        println "Plugin ${pluginName} not found in the Update Center."
-      }
+// Loop through each plugin and install if not already installed
+pluginsToInstall.each { pluginName ->
+  // Check if the plugin is already installed
+  if (!pluginManager.getPlugin(pluginName)) {
+    println "Installing plugin: ${pluginName}"
+    def plugin = updateCenter.getPlugin(pluginName)
+
+    if (plugin) {
+      // Deploy plugin (install it)
+      plugin.deploy(true).get() // 'get()' waits for the installation to complete
+      println "Successfully installed ${pluginName}."
     } else {
-      println "Plugin ${pluginName} is already installed."
+      println "Plugin ${pluginName} not found in the Update Center."
     }
+  } else {
+    println "Plugin ${pluginName} is already installed."
   }
 }
-
-installPlugins(pluginsToInstall)
-
 

@@ -3,20 +3,20 @@ import hudson.slaves.DumbSlave
 import hudson.slaves.JNLPLauncher
 import hudson.slaves.RetentionStrategy
 import hudson.model.Node
-import hudson.node_monitors.*
 
-def nodeName          = "agent-node"
-def nodeDescription   = "Common Agent Node"
-def remoteFS          = "/jenkins"
-def numExecutors     = 2
-def labelString       = "agent"
-def mode                     = Node.Mode.NORMAL
-def launcher                 = new JNLPLauncher()
-def retentionStrategy        = RetentionStrategy.Always.INSTANCE
-def env                      = []
+def nodeName = "agent-node"
+def nodeDescription = "Agent Node"
+def remoteFS = "/jenkins"
+def numExecutors = 2
+def labelString = "agent"
+def mode = Node.Mode.NORMAL
+def launcher = new JNLPLauncher()
+def retentionStrategy = RetentionStrategy.Always.INSTANCE
+def env = []
 
-def diskSpaceThreshold = new DiskSpaceMonitorDescriptor.DiskSpace("/jenkins", 1024 * 1024 * 10)
+// Check if node already exists
 if (Jenkins.instance.getNode(nodeName) == null) {
+  // Create the agent node
   DumbSlave agentNode = new DumbSlave(
       nodeName,
       nodeDescription,
@@ -28,10 +28,10 @@ if (Jenkins.instance.getNode(nodeName) == null) {
       retentionStrategy,
       env
   )
-  agentNode.getNodeProperties().add(new NodePropertyDescriptor())
-  agentNode.getNodeProperties().add(new DiskSpaceMonitorDescriptor(diskSpaceThreshold))
+
+  // Add the node to Jenkins
   Jenkins.instance.addNode(agentNode)
-  println "Agent node '${nodeName}' with custom disk space monitoring has been added successfully."
+  println "Agent node '${nodeName}' has been added successfully."
 } else {
   println "Node '${nodeName}' already exists. Skipping creation."
 }
