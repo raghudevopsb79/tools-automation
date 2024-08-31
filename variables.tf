@@ -21,10 +21,14 @@ variable "tools" {
       predefined_policies = ["AdministratorAccess"]
     }
 
-    jenkins-server = {
-      name                = "jenkins-server"
+    jenkins = {
+      name                = "jenkins"
       instance_type       = "t3.small"
-      port_no             = {}
+      port_no             = {
+        port_no = {
+          vault = 8080
+        }
+      }
       policy_actions      = []
       volume_size         = 20
       predefined_policies = []
