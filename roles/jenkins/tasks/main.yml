@@ -33,6 +33,7 @@
     - 02-admin-user.groovy
     - 03-plugins.groovy
     - 04-add-agent.groovy
+    - 05-security-for-nodes.groovy
 
 - name: Start Jenkins Service
   ansible.builtin.systemd_service:
