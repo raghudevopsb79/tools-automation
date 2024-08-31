@@ -26,7 +26,7 @@ variable "tools" {
       instance_type       = "t3.small"
       port_no             = {
         port_no = {
-          vault = 8080
+          jenkins = 8080
         }
       }
       policy_actions      = []
