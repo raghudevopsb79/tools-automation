@@ -10,7 +10,7 @@
 
 - name: Download Agent Jar file
   ansible.builtin.get_url:
-    url: http://{{secrets.user}}:{{secrets.password}}@jenkins.rdevopsb79.online:9090/jnlpJars/agent.jar
+    url: http://{{secrets.user}}:{{secrets.password}}@jenkins.rdevopsb79.online:8080/jnlpJars/agent.jar
     dest: /home/ec2-user/remoting.jar
   become_user: ec2-user
 
