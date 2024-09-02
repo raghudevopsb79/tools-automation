@@ -89,7 +89,8 @@ def pluginsToInstall = [
     'email-ext',
     'theme-manager',
     'dark-theme',
-    'blueocean'
+    'blueocean',
+    'multibranch-scan-webhook-trigger/'
 ]
 
 // Reference Jenkins Plugin Manager and Update Center
