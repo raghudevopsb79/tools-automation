@@ -7,7 +7,7 @@ scm.setCredentialsId("")
 
 LibraryRetriever libRetriever = new SCMSourceRetriever(scm)
 
-LibraryConfiguration libConfig = new LibraryConfiguration("common-pipelines", libRetriever)
+LibraryConfiguration libConfig = new LibraryConfiguration("roboshop-jenkins-library", libRetriever)
 libConfig.setDefaultVersion("main")
 libConfig.setImplicit(false)
 libConfig.setIncludeInChangesets(true)
