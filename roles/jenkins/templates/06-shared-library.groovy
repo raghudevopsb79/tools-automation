@@ -1,32 +1,19 @@
-import jenkins.model.*
-import hudson.plugins.git.*
-import hudson.plugins.git.extensions.*
-import hudson.plugins.git.GitSCM
-import hudson.plugins.git.UserRemoteConfig
-import hudson.plugins.git.BranchSpec
-import hudson.model.*
-import org.jenkinsci.plugins.workflow.cps.*
+import jenkins.model.*;
+import org.jenkinsci.plugins.workflow.libs.*;
+import jenkins.scm.api.SCMSource;
 
-def instance = Jenkins.getInstance()
+SCMSource scm = new jenkins.plugins.git.GitSCMSource("https://github.com/raghudevopsb79/roboshop-jenkins")
+scm.setCredentialsId("")
 
-def globalLib = new org.jenkinsci.plugins.workflow.libs.GlobalLibraries()
+LibraryRetriever libRetriever = new SCMSourceRetriever(scm)
 
-def sharedLib = new org.jenkinsci.plugins.workflow.libs.LibraryConfiguration(
-    'roboshop',
-    new hudson.plugins.git.GitSCM(
-        [new UserRemoteConfig('https://github.com/raghudevops79/roboshop-jenkins.git', null, null, null)],
-        [new BranchSpec('*/main')],
-        new GitSCM.DescriptorImpl(),
-        new hudson.plugins.git.extensions.impl.CleanBeforeCheckout(),
-        new hudson.plugins.git.extensions.impl.LocalBranch('main'),
-        null
-    ),
-    'roboshop@main'
-)
+LibraryConfiguration libConfig = new LibraryConfiguration("common-pipelines", libRetriever)
+libConfig.setDefaultVersion("main")
+libConfig.setImplicit(false)
+libConfig.setIncludeInChangesets(true)
 
-// Add the library configuration to Jenkins
-globalLib.libs = [sharedLib]
-instance.getDescriptorByType(org.jenkinsci.plugins.workflow.libs.GlobalLibraries.DescriptorImpl).setGlobalLibraries(globalLib)
+List<LibraryConfiguration> libraries= new ArrayList<LibraryConfiguration>()
+libraries.add(libConfig)
 
-// Save the configuration
-instance.save()
+GlobalLibraries globalLibs = GlobalConfiguration.all().get(GlobalLibraries.class)
+globalLibs.setLibraries(libraries)
