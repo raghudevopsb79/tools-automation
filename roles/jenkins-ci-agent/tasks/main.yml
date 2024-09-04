@@ -45,6 +45,13 @@
     remote_src: true
 
 
+- name: Download and extract sonar-scanner
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.1.0.4477-linux-x64.zip
+    dest: /opt
+    owner: jenkins
+    group: jenkins
 
 
 
