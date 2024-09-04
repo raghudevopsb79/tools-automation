@@ -91,7 +91,8 @@ def pluginsToInstall = [
     'dark-theme',
     'blueocean',
     'multibranch-scan-webhook-trigger',
-    'pipeline-stage-view'
+    'pipeline-stage-view',
+    'hashicorp-vault-plugin'
 ]
 
 // Reference Jenkins Plugin Manager and Update Center
