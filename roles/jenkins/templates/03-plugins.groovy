@@ -92,7 +92,8 @@ def pluginsToInstall = [
     'blueocean',
     'multibranch-scan-webhook-trigger',
     'pipeline-stage-view',
-    'hashicorp-vault-plugin'
+    'hashicorp-vault-plugin',
+    'mask-passwords'
 ]
 
 // Reference Jenkins Plugin Manager and Update Center
