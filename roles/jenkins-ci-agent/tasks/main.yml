@@ -53,6 +53,20 @@
     owner: jenkins
     group: jenkins
 
+- name: Download Hashicorp repo file
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    dest: /etc/yum.repos.d
+
+- name: Install Hashicorp Vault
+  ansible.builtin.dnf:
+    name: vault
+    state: installed
+
+
+
+
 
 
 
