@@ -54,10 +54,9 @@
     group: jenkins
 
 - name: Download Hashicorp repo file
-  ansible.builtin.unarchive:
-    remote_src: true
-    src: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-    dest: /etc/yum.repos.d
+  ansible.builtin.get_url:
+    url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    dest: /etc/yum.repos.d/hashicorp.repo
 
 - name: Install Hashicorp Vault
   ansible.builtin.dnf:
