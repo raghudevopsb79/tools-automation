@@ -39,19 +39,19 @@ variable "tools" {
       port_no             = {}
       policy_actions      = []
       volume_size         = 20
-      predefined_policies = []
+      predefined_policies = ["AmazonEC2ContainerRegistryFullAccess"]
     }
 
-    sonarqube = {
-      name          = "sonarqube"
-      instance_type = "t3.large"
-      port_no = {
-        jenkins   = 9000
-      }
-      policy_actions      = []
-      volume_size         = 20
-      predefined_policies = []
-    }
+#     sonarqube = {
+#       name          = "sonarqube"
+#       instance_type = "t3.large"
+#       port_no = {
+#         jenkins   = 9000
+#       }
+#       policy_actions      = []
+#       volume_size         = 20
+#       predefined_policies = []
+#     }
 
   }
 }
