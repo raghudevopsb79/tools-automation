@@ -64,9 +64,7 @@
     state: installed
 
 - name: Install Docker
-  ansible.builtin.dnf:
-    name: docker
-    state: installed
+  ansible.builtin.shell: curl https://raw.githubusercontent.com/learndevopsonline/labautomation/master/tools/docker/install.sh | bash ; usermod -a -G docker jenkins
 
 
 
