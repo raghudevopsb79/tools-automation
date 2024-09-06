@@ -67,7 +67,7 @@
   ansible.builtin.shell: curl https://raw.githubusercontent.com/learndevopsonline/labautomation/master/tools/docker/install.sh | bash ; usermod -a -G docker jenkins
 
 - name: Increase disk size
-  ansible.builtin.shell: growpart /dev/nvme0n1 4 ; lvextend -L 20G /dev/mapper/RootVG-varVol
+  ansible.builtin.shell: growpart /dev/nvme0n1 4 ; lvextend -r -L 20G /dev/mapper/RootVG-varVol
 
 
 
