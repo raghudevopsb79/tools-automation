@@ -26,7 +26,7 @@
 
 - name: Increase File System
   ansible.builtin.shell: |
-    growpart /dev/nvme0n1 4
+    growpart /dev/nvme0n1 4 || true
     lvextend -r -l +100%FREE /dev/mapper/RootVG-rootVol
 
 - name: Copy Jenkins Service file
