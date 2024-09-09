@@ -71,8 +71,11 @@
 - name: Install Docker
   ansible.builtin.shell: curl https://raw.githubusercontent.com/learndevopsonline/labautomation/master/tools/docker/install.sh | bash ; usermod -a -G docker jenkins
 
-- name: Increase disk size
-  ansible.builtin.shell: growpart /dev/nvme0n1 4 ; lvextend -r -L 20G /dev/mapper/RootVG-varVol
+- name: Install argocd cli
+  ansible.builtin.shell: |
+    curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+    install -m 555 argocd-linux-amd64 /bin/argocd
+    rm argocd-linux-amd64
 
 
 
