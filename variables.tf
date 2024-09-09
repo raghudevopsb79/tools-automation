@@ -29,7 +29,7 @@ variable "tools" {
         jnlp-port = 50000
       }
       policy_actions      = []
-      volume_size         = 20
+      volume_size         = 30
       predefined_policies = []
     }
 
