@@ -4,7 +4,7 @@
 # gh auth login -s admin:org
 
 - name: Set Prompt
-  ansible.builtin.shell: set-prompt ci-server
+  ansible.builtin.shell: set-prompt github-runner
 
 - name: Check Runner running or not
   ansible.builtin.shell: ps -ef | grep /actions-runner/bin/Runner.Listener | grep -v grep
