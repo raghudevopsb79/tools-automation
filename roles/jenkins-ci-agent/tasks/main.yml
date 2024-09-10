@@ -77,9 +77,11 @@
     install -m 555 argocd-linux-amd64 /bin/argocd
     rm argocd-linux-amd64
 
-
-
-
+# Following steps need to be run manually
+# sudo curl -L -o /etc/yum.repos.d/gh-cli.repo https://cli.github.com/packages/rpm/gh-cli.repo
+# sudo dnf install gh -y
+# sudo su - jenkins
+# gh auth login -s admin:org
 
 
 
