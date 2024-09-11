@@ -107,9 +107,13 @@
     touch ~/.kube/config
   become_user: ec2-user
 
-# - name: Increase disk volumes
-#   ansible.builtin.shell: |
-#     growpart /dev/nvme0n1 4
-#     lvextend -r -L +5G /dev/mapper/RootVG-homeVol
-#     lvextend -r -L +5G /dev/mapper/RootVG-varVol
+- name: Increase Partition
+  ansible.builtin.shell: growpart /dev/nvme0n1 4
+  ignore_errors: yes
+
+- name: Increase disk volumes
+  ansible.builtin.shell: |
+    lvextend -r -L {{item.size}}G /dev/mapper/RootVG-{{ item.name }}
+  loop: "{{ lvs }}"
+
 

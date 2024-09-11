@@ -1,1 +1,11 @@
 secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra-secrets/data/ci-server token={{vault_token}} url=https://vault-internal.rdevopsb79.online:8200 validate_certs=false') }}"
+
+lvs:
+  - {name: auditVol, size: 4.4}
+  - {name: homeVol, size: 1}
+  - {name: logVol, size: 2}
+  - {name: rootVol, size: 11}
+  - {name: swapVol, size: 2}
+  - {name: varTmpVol, size: 2}
+  - {name: varVol, size: 2}
+
