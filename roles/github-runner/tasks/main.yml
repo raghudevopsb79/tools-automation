@@ -115,5 +115,6 @@
   ansible.builtin.shell: |
     lvextend -r -L {{item.size}}G /dev/mapper/RootVG-{{ item.name }}
   loop: "{{ lvs }}"
+  ignore_errors: true
 
 
